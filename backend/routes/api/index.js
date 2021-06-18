@@ -12,11 +12,19 @@ router.use('/users', usersRouter);
 
 
 
+const { restoreUser } = require('../../utils/auth.js');
+router.get(
+  '/restore-user',
+  restoreUser,
+  (req, res) => {
+    return res.json(req.user);
+  }
+);
 
 
 
-// //Test
-//1
+// // //Test
+// //1
 // router.get('/set-token-cookie', asyncHandler(async (req, res) => {
 //   const user = await User.findOne({
 //       where: {
@@ -27,8 +35,8 @@ router.use('/users', usersRouter);
 //   return res.json({ user });
 // }));
 
-// // GET /api/restore-user
-//2
+// // // GET /api/restore-user
+// //2
 // const { restoreUser } = require('../../utils/auth.js');
 // router.get(
 //   '/restore-user',
@@ -38,8 +46,8 @@ router.use('/users', usersRouter);
 //   }
 // );
 
-// // GET /api/require-auth
-//3
+// // // GET /api/require-auth
+// //3
 // const { requireAuth } = require('../../utils/auth.js');
 // router.get(
 //   '/require-auth',
@@ -48,7 +56,7 @@ router.use('/users', usersRouter);
 //     return res.json(req.user);
 //   }
 // );
-//4
+// //4
 // router.post('/test', function(req, res) {
 //     res.json({ requestBody: req.body });
 //   });
