@@ -5,9 +5,9 @@ export default function Home(){
 
     return(
         <form>
-            <ul>
+            <div>
                 {}
-            </ul>
+            </div>
         </form>
     )
 }
