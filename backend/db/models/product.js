@@ -11,5 +11,36 @@ module.exports = (sequelize, DataTypes) => {
     Product.belongsTo(models.User, {foreignKey: 'ownerId'});
     Product.hasMany(models.Review, {foreignKey: 'productId'});
   };
-  return Product;
+
+  //read - single
+  Product.prototype.getCurrentProduct = async function(productId){
+    return Product.findByPk(productId);
+  }
+  //read - all
+  Product.getAllProducts = function () {
+    return Product.findAll();
+  }
+  //create
+  Product.prototype.createProduct = async function(ownerId, title, imageUrl, description) {
+    const product = await Product.create({
+      ownerId,
+      title,
+      imageUrl,
+      description
+    });
+    return product;
+  }
+  //update
+  Product.prototype.updateProduct = async function(productId, updatedInfo){
+    const currentProduct = getCurrentProduct(productId);
+    currentProduct.update(updatedInfo)
+  }
+  //delete
+  Product.deleteProduct = async function(productId){
+    Product.destroy({
+      where: {
+        productId
+      }
+    })
+  }
 };

@@ -33,11 +33,10 @@ const validateLogin = [
             return next(err);
         }
     
-        await setTokenCookie(res, user);
-    
-        return res.json({
-            user,
-        });
+        await setTokenCookie(res, user);    
+          return res.json({
+              user,
+          });
         }),
     );
 
