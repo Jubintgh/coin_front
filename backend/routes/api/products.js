@@ -26,8 +26,9 @@ const validateNewProduct = [
     handleValidationErrors
 ];
 
-router.get('/', (req, res) => {
-    const {}
+router.get('/', async (req, res) => {
+    const productList = await getAllProducts();
+    return productList;
 })
 
 
@@ -36,11 +37,19 @@ router.post('/', validateNewProduct, asyncHandler(async (req, res) => {
     const { ownerId, title, imageUrl, description } = req.body;
     const product = await Product.createProduct(ownerId, title, imageUrl, description);
     
-    if(product){
-        res.redirect('/home')
-    }
+    if(product) res.redirect('/home');
 }))
 
-router.delete('/:id', (req, res) => {
-    
-})
+router.delete('/:id', asyncHandler(async (req, res) => {
+
+    const productId = req.params;
+    await deleteProduct(productId);
+    return;
+}))
+
+router.put('/:id', validateNewProduct, asyncHandler( async(req, res) => {
+    const productId = req.params;
+    const currentProduct = getCurrentProductById(productId);
+
+    currentProduct.update({});
+}))

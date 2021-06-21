@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   //read - single
-  Product.prototype.getCurrentProduct = async function(productId){
+  Product.getCurrentProductById = async function(productId){
     return Product.findByPk(productId);
   }
   //read - all
