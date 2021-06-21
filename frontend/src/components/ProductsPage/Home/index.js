@@ -3,7 +3,7 @@ import * as productActions from '../../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 
-function Home(){
+export default function Home(){
 
     return(
         <form>
