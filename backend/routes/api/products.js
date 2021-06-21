@@ -9,22 +9,22 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-const validateNewProduct = [
-    check(title)
-        .exists({checkFalsy: true})
-        .isLength({max: 500})
-        .isString()
-        .withMessage('Please provide a valid title.'),
-    check(imageUrl)
-        .exists({checkFalsy: true})
-        .isString()
-        .withMessage('Please provide a valid URL.'),
-    check(description)
-        .exists({checkFalsy: true})
-        .isString()
-        .withMessage('Please provide a valid description.'),
-    handleValidationErrors
-];
+// const validateNewProduct = [
+//     check(title)
+//         .exists({checkFalsy: true})
+//         .isLength({max: 500})
+//         .isString()
+//         .withMessage('Please provide a valid title.'),
+//     check(imageUrl)
+//         .exists({checkFalsy: true})
+//         .isString()
+//         .withMessage('Please provide a valid URL.'),
+//     check(description)
+//         .exists({checkFalsy: true})
+//         .isString()
+//         .withMessage('Please provide a valid description.'),
+//     handleValidationErrors
+// ];
 
 router.get('/', asyncHandler(async (req, res) => {
     const productList = await getAllProducts();
@@ -32,7 +32,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 
-router.post('/', validateNewProduct, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
 
     const { ownerId, title, imageUrl, description } = req.body;
     const product = await Product.createProduct(ownerId, title, imageUrl, description);
@@ -47,9 +47,11 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return;
 }))
 
-router.put('/:id', validateNewProduct, asyncHandler( async(req, res) => {
+router.put('/:id', asyncHandler( async(req, res) => {
     const productId = req.params;
     const currentProduct = getCurrentProductById(productId);
 
     currentProduct.update({});
 }))
+
+module.exports = router;
