@@ -84,19 +84,19 @@ const productReducer = (state = initialState, action) => {
     switch (action.type){
         case LOAD_PRODUCT:
             newState = Object.assign({}, state);
-            newState.product = action.payload;
+            newState.products = action.payload;
             return newState;
         case REMOVE_PRODUCT:
             newState = Object.assign({}, state);
-            newState.product = action.payload;
+            newState.products = action.payload;
             return newState;
         case UPDATE_PRODUCT:
             newState = Object.assign({}, state);
-            newState.product = null;
+            newState.products = null;
             return newState;
         case ADD_PRODUCT:
             newState = Object.assign({}, state);
-            newState.product = null;
+            newState.products = null;
             return newState;
         default:
             return state;
