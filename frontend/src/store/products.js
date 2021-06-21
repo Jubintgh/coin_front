@@ -1,3 +1,5 @@
+import { csrfFetch } from './csrf';
+
 export const LOAD_PRODUCT = "products/LOAD_PRODUCTS"
 export const REMOVE_PRODUCT = "products/REMOVE_PRODUCT"
 export const UPDATE_PRODUCT = "products/UPDATE_PRODUCT"
@@ -35,7 +37,7 @@ const addOneProduct = (product) => {
 
 fetch all products in products list*/
 export const getProducts = () => async (dispatch) => {
-    const response = await fetch(`/api/products`)
+    const response = await csrfFetch(`/api/products`)
 
     if (response.ok){
         const products = await response.json();
@@ -45,7 +47,7 @@ export const getProducts = () => async (dispatch) => {
 }
 
 export const deleteProduct = (id) => async (dispatch) => {
-    const response = await fetch(`/api/products/${id}`, {
+    const response = await csrfFetch(`/api/products/${id}`, {
         method: 'DELETE',
     });
     dispatch(removeProduct(id));
@@ -53,7 +55,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 }
 
 export const createProduct = (product) => async (dispatch) => {
-    const response = await fetch(`/api/products`, {
+    const response = await csrfFetch(`/api/products`, {
         method: "POST",
         body: JSON.stringify({
             product
@@ -65,7 +67,7 @@ export const createProduct = (product) => async (dispatch) => {
 };
 
 export const updateOneProduct = (id) => async (dispatch) => {
-    const response = await fetch(`/api/products/:id`, {
+    const response = await csrfFetch(`/api/products/:id`, {
         method: "PUT"
     });
     const data = await response.json();

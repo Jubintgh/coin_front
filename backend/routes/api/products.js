@@ -27,7 +27,7 @@ const router = express.Router();
 // ];
 
 router.get('/', asyncHandler(async (req, res) => {
-    const productList = await getAllProducts();
+    const productList = await Product.getAllProducts();
     return productList;
 }))
 
@@ -43,13 +43,13 @@ router.post('/', asyncHandler(async (req, res) => {
 router.delete('/:id', asyncHandler(async (req, res) => {
 
     const productId = req.params;
-    await deleteProduct(productId);
+    await Product.deleteProduct(productId);
     return;
 }))
 
 router.put('/:id', asyncHandler( async(req, res) => {
     const productId = req.params;
-    const currentProduct = getCurrentProductById(productId);
+    const currentProduct = Product.getCurrentProductById(productId);
 
     currentProduct.update({});
 }))

@@ -17,8 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     return Product.findByPk(productId);
   }
   //read - all
-  Product.getAllProducts = function () {
-    return Product.findAll();
+  Product.getAllProducts = async function () {
+    const allProducts = await Product.findAll();
+    return allProducts;
   }
   //create
   Product.prototype.createProduct = async function(ownerId, title, imageUrl, description) {
