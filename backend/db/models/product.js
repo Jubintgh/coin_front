@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   Product.prototype.updateProduct = async function(productId, updatedInfo){
     const currentProduct = getCurrentProduct(productId);
     currentProduct.update(updatedInfo)
+    return currentProduct;
   }
   //delete
   Product.deleteProduct = async function(productId){
@@ -42,5 +43,6 @@ module.exports = (sequelize, DataTypes) => {
         productId
       }
     })
+    return;
   }
 };
