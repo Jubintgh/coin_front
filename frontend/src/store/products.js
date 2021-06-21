@@ -6,28 +6,28 @@ export const ADD_PRODUCT = "products/ADD_PRODUCT"
 const load = (products) => {
     return {
         type: LOAD_PRODUCT,
-        products
+        payload: products
     }
 }
 
 const removeProduct = (productId) => {
     return {
         type: REMOVE_PRODUCT,
-        productId
+        payload: productId
     }
 }
 
 const updateProduct = (productId) => {
     return {
         type: UPDATE_PRODUCT,
-        productId
+        payload: productId
     }
 }
 //uses object
 const addOneProduct = (product) => {
     return {
         type: ADD_PRODUCT,
-        product
+        payload: product
     }
 }
 
@@ -41,6 +41,7 @@ export const getProducts = () => async (dispatch) => {
         const products = await response.json();
         dispatch(load(products))
     }
+    return response;
 }
 
 export const deleteProduct = (id) => async (dispatch) => {
@@ -72,11 +73,17 @@ export const updateOneProduct = (id) => async (dispatch) => {
     return response;
 }
 
-const initialState = { user: null };
+const initialState = { 
+    products: null 
+};
 
 const productReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
+        case LOAD_PRODUCT:
+            newState = Object.assign({}, state);
+            newState.product = action.payload;
+            return newState;
         case REMOVE_PRODUCT:
             newState = Object.assign({}, state);
             newState.product = action.payload;

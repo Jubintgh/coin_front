@@ -26,10 +26,10 @@ const validateNewProduct = [
     handleValidationErrors
 ];
 
-router.get('/', async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
     const productList = await getAllProducts();
     return productList;
-})
+}))
 
 
 router.post('/', validateNewProduct, asyncHandler(async (req, res) => {
