@@ -1,8 +1,10 @@
-
+import { useParams } from "react-router"
 
 
 export default function ProductDetail({product: {title, description, imageUrl}}){
 
+    const routeId = useParams();
+    
     return (
         <>
             <section className={'content__div'}>{/* image and description */}

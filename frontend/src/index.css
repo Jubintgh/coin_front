@@ -10,11 +10,12 @@
     padding-top: 20px;
     padding-bottom: 20px;
     flex-direction: row;
+    width:auto;
 }
 
 .content__div{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 5em;
     padding-top: 50px;
     padding-right: 19%;
@@ -23,6 +24,7 @@
 }
 
 .product__title{
+    justify-self: center;
     
 }
 
@@ -32,6 +34,7 @@
 
 .product__img{
 
+    justify-self: flex-start;
     padding: 5px;
     width: 100px;
     height: 100px;
