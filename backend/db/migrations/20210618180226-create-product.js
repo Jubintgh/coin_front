@@ -13,7 +13,7 @@ module.exports = {
         references: {model: "Users"} 
       },
       title: {
-        type: Sequelize.STRING(600)
+        type: Sequelize.TEXT
       },
       imageUrl: {
         type: Sequelize.STRING
