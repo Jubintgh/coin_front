@@ -76,7 +76,7 @@ export const updateOneProduct = (id) => async (dispatch) => {
 }
 
 const initialState = { 
-    products: null 
+    products: [] 
 };
 
 const productReducer = (state = initialState, action) => {

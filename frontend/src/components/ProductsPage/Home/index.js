@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react'; 
 import * as productActions from '../../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router';
+import ProductDetail from '../ProductComp/index'
+import {NavLink, Route, useParams} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 
 export default function Home(){
 
@@ -9,14 +12,17 @@ export default function Home(){
 
     useEffect(()=> {
         dispatch(productActions.getProducts());
-    },[])
+    },[dispatch])
 
+    const products = useSelector(state => state.products)
 
     return(
-        <form>
-            <div>
-                {/* <p>{console.log(allProds)}</p> */}
-            </div>
-        </form>
+        <main>
+            {products.products.map(product => (
+                <Link to={`${product.id}`}className={'product__container'}>
+                    <ProductDetail product={product}/>
+                </Link>
+            ))}
+        </main>
     )
 }

@@ -28,7 +28,7 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
     const productList = await Product.getAllProducts();
-    return productList;
+    return res.json(productList);
 }))
 
 
@@ -36,8 +36,6 @@ router.post('/', asyncHandler(async (req, res) => {
 
     const { ownerId, title, imageUrl, description } = req.body;
     const product = await Product.createProduct(ownerId, title, imageUrl, description);
-    
-    if(product) res.redirect('/home');
 }))
 
 router.delete('/:id', asyncHandler(async (req, res) => {
