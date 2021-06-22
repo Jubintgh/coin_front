@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import * as productActions from '../../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductDetail from '../ProductComp/index'
-import {NavLink, Route, useParams} from 'react-router-dom'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 export default function Home(){
 
+    const productId = useParams().productId;
     const dispatch = useDispatch();
 
     useEffect(()=> {
@@ -15,12 +15,13 @@ export default function Home(){
     },[dispatch])
 
     const products = useSelector(state => state.products)
+    const prodArr = Object.values(products)
 
     return(
         <main>
-            {products.products.map(product => (
-                <Link to={`${product.id}`}className={'product__container'}>
-                    <ProductDetail product={product}/>
+            {productId ? <ProductDetail id={productId}/> : prodArr.map(product => (
+                <Link key={product.id} to={`products/${product.id}`} className={'product__container'}>
+                    <ProductDetail id={product.id}/>
                 </Link>
             ))}
         </main>

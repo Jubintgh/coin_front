@@ -33,9 +33,19 @@ const addOneProduct = (product) => {
     }
 }
 
-/* Thunk Actions:
+//Thunk Actions:
+export const getSingleProduct = (id) => async(dispatch) => {
+    const response = await csrfFetch(`api/products/${id}`)
 
-fetch all products in products list*/
+    if(response.ok){
+        const product = await response.json();
+        dispatch(load(product))
+    }
+    return response;
+}
+
+
+//fetch all products in products list
 export const getProducts = () => async (dispatch) => {
     const response = await csrfFetch(`/api/products`)
 
@@ -75,17 +85,18 @@ export const updateOneProduct = (id) => async (dispatch) => {
     return response;
 }
 
-const initialState = { 
-    products: [] 
-};
+const initialState = {};
 
 const productReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
         case LOAD_PRODUCT:
-            newState = Object.assign({}, state);
-            newState.products = action.payload;
+            newState = action.payload.reduce((obj, el) => {
+                obj[el.id] = el;
+                return obj;
+            }, {})
             return newState;
+
         case REMOVE_PRODUCT:
             newState = Object.assign({}, state);
             newState.products = action.payload;

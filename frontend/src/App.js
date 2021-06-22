@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Home from "./components/ProductsPage/Home";
+import Product from "./components/ProductsPage/Product";
+import NewProduct from "./components/ProductsPage/newProduct"
 
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -21,14 +23,23 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/">
-            <Home />
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route exact path="/products">
+            {/* <AllProducts /> */}
+          </Route>
+          <Route exact path="/products/:productId">
+            <Product/>
+          </Route>
+          <Route exact path="/products/new">
+            <NewProduct/>
           </Route>
         </Switch>
       )}
