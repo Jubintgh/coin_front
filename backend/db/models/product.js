@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     return allProducts;
   }
   //create
-  Product.prototype.createProduct = async function(ownerId, title, imageUrl, description) {
+  Product.createProduct = async function(ownerId, title, imageUrl, description) {
     const product = await Product.create({
       ownerId,
       title,

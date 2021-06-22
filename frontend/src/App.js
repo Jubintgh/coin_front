@@ -35,11 +35,11 @@ function App() {
           <Route exact path="/products">
             {/* <AllProducts /> */}
           </Route>
-          <Route exact path="/products/:productId">
-            <Product/>
-          </Route>
           <Route exact path="/products/new">
             <NewProduct/>
+          </Route>
+          <Route path="/products/:productId">
+            <Product/>
           </Route>
         </Switch>
       )}

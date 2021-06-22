@@ -71,9 +71,11 @@ export const createProduct = (product) => async (dispatch) => {
             product
         })
     });
-    const data = await response.json();
-    dispatch(addOneProduct(data.product))
-    return response;
+    if(response.ok){
+        const data = await response.json();
+        dispatch(addOneProduct(data.product))
+        return response;
+    }
 };
 
 export const updateOneProduct = (id) => async (dispatch) => {
@@ -105,10 +107,12 @@ const productReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             newState.products = null;
             return newState;
+
         case ADD_PRODUCT:
             newState = Object.assign({}, state);
-            newState.products = null;
+            newState.products = action.payload;
             return newState;
+
         default:
             return state;
     }
