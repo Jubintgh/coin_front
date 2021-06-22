@@ -31,6 +31,12 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(productList);
 }))
 
+router.get('/:id', asyncHandler(async (req, res) => {
+    const productId = req.params;
+    const product = await Product.getCurrentProductById(productId)
+    return res.json(product);
+}))
+
 
 router.post('/', asyncHandler(async (req, res) => {
 
