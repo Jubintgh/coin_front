@@ -7,6 +7,7 @@ import * as productActions from '../../../store/products';
 export default function Product(){
 
     const dispatch = useDispatch();
+    
 
     const {productId} = useParams();
     useEffect(()=> {
@@ -16,5 +17,4 @@ export default function Product(){
     return (
         <ProductDetail id={productId}/>
     )
-
 }

@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Home from "./components/ProductsPage/Home";
 import Product from "./components/ProductsPage/Product";
-import NewProduct from "./components/ProductsPage/newProduct"
+import NewProduct from "./components/ProductsPage/NewProduct"
 
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";

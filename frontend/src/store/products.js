@@ -12,10 +12,10 @@ const load = (products) => {
     }
 }
 
-const removeProduct = (productId) => {
+const removeProduct = (product) => {
     return {
         type: REMOVE_PRODUCT,
-        payload: productId
+        payload: product
     }
 }
 
@@ -67,14 +67,14 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const createProduct = (product) => async (dispatch) => {
     const response = await csrfFetch(`/api/products`, {
         method: "POST",
-        body: JSON.stringify({
+        body: JSON.stringify(
             product
-        })
+        )
     });
     if(response.ok){
         const data = await response.json();
-        dispatch(addOneProduct(data.product))
-        return response;
+        dispatch(addOneProduct(data))
+        return data;
     }
 };
 
@@ -84,7 +84,7 @@ export const updateOneProduct = (id) => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(updateProduct(data.product));
-    return response;
+    return data;
 }
 
 const initialState = {};
@@ -101,11 +101,12 @@ const productReducer = (state = initialState, action) => {
 
         case REMOVE_PRODUCT:
             newState = Object.assign({}, state);
-            newState.products = action.payload;
-            return newState;
+            delete newState.products[action.payload.id];
+            return newState
+
         case UPDATE_PRODUCT:
             newState = Object.assign({}, state);
-            newState.products = null;
+            newState.products[action.payload.id] = action.payload;
             return newState;
 
         case ADD_PRODUCT:

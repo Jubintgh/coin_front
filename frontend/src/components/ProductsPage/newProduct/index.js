@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../../store/products";
 import { useHistory } from "react-router-dom";
-import * as productActions from '../../../store/products';
+
 
 export default function NewProduct(){
     const dispatch = useDispatch();
@@ -22,9 +22,8 @@ export default function NewProduct(){
             imageUrl,
             description
         }
-        console.log(payload, "THIS IS THE PAYLOAD");
         const newProduct = await dispatch(createProduct(payload));
-        if(newProduct) history.push(`products/${newProduct.id}`)
+        if(newProduct) history.push(`/products/${newProduct.id}`)
     };
 
     return(

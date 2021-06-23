@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     ownerId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    // price: Sequelize.DECIMAL
   }, {});
   Product.associate = function(models) {
 
@@ -23,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   //create
   Product.createProduct = async function(ownerId, title, imageUrl, description) {
+
     const product = await Product.create({
       ownerId,
       title,
@@ -38,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     return currentProduct;
   }
   //delete
-  Product.deleteProduct = async function(productId){
+  Product.deleteProduct = async function(id){
     Product.destroy({
       where: {
         productId

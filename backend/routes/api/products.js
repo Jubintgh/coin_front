@@ -39,7 +39,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 
 router.post('/', asyncHandler(async (req, res) => {
-
     const { ownerId, title, imageUrl, description } = req.body;
     const product = await Product.createProduct(ownerId, title, imageUrl, description);
     return res.json(product);
@@ -47,8 +46,12 @@ router.post('/', asyncHandler(async (req, res) => {
 
 router.delete('/:id', asyncHandler(async (req, res) => {
 
-    const productId = req.params;
-    await Product.deleteProduct(productId);
+    const {id} = req.params;
+    Product.destroy({
+        where: {
+          id : id
+        }
+    })
     return;
 }))
 
