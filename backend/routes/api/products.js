@@ -55,14 +55,14 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return;
 }))
 
-router.put('/api/products/:id', asyncHandler( async(req, res) => {
+router.put('/:id', asyncHandler( async(req, res) => {
     // const {id} = req.params;
     // const currentProduct = Product.getCurrentProductById(id);
 
     // currentProduct.update({});
-    const id = Number(req.body.product.id)
+    const { id, title, imageUrl, description } = req.body;
+
     const currentProduct = await Product.findByPk(id);
-    console.log(currentProduct)
     await currentProduct.update(req.body)
     return res.json(currentProduct);
 }))

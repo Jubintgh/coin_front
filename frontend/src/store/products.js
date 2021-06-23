@@ -85,9 +85,11 @@ export const updateOneProduct = (editedProd) => async (dispatch) => {
             editedProd
         )
     });
-    const data = await response.json();
-    dispatch(updateProduct(data));
-    return data;
+    if(response.ok){
+        const data = await response.json();
+        dispatch(addOneProduct(data));
+        return data;
+    }
 }
 
 const initialState = {};

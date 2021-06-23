@@ -19,7 +19,7 @@ export default function EditProductForm(){
     const [description, setDescription] = useState(product.description);
 
     useEffect(() => {
-        
+
 
     },[product])
 
@@ -27,9 +27,9 @@ export default function EditProductForm(){
         e.preventDefault();
 
         const payload = {
-            product
+            id: product.id, title, imageUrl, description
         }
-        const newProduct = await dispatch(updateOneProduct(product));
+        const newProduct = await dispatch(updateOneProduct(payload));
         if(newProduct) history.push(`/products/${newProduct.id}`)
     };
 
