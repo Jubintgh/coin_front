@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteProduct } from "../../../store/products";
+import { deleteProduct, updateOneProduct } from "../../../store/products";
 import { useHistory } from "react-router";
 import { useParams } from "react-router-dom";
 
 
-
-export default function ProductDetail({id}){
+export default function ProductDetail({id, homePage}){
     
     const dispatch = useDispatch();
     const product = useSelector(state => state.products[id]);
@@ -22,13 +21,13 @@ export default function ProductDetail({id}){
     }, [product, currUser])
     
     const {productId} = useParams();
-    const deleteThis = async (id) => {
+    const deleteThis = async () => {
         await dispatch(deleteProduct(productId));
-        history.push(`/products`)
+        history.push(`/products`);
         return;
     }
-    const editThis = async (id) => {
-        await dispatch()
+    const editThis = async () => {
+        history.push(`/products/${product.id}/edit`);
     }
     
     if(!product) return null
@@ -44,8 +43,8 @@ export default function ProductDetail({id}){
                 <button className={'button__upvote'}> ^ </button>{/*UPVOTE*/}
             </div>
             <div className={'product__discussion'}>for discussion</div>
-            <button disabled={!isAuth} onClick={() => deleteThis(product.id)} type="button">DELETE</button>
-            <button disabled={!isAuth} onClick={() => deleteThis(product.id)} type="button">EDIT</button>
+            <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>
+            <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT</button>
         </section>
     )
 }

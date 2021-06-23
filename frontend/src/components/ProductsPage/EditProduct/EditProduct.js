@@ -1,28 +1,35 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct } from "../../../store/products";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
+import { useParams } from "react-router-dom";
+import { updateOneProduct } from "../../../store/products";
 
 
-export default function NewProduct(){
-    
+export default function EditProductForm(){
+    const {id} = useParams()
     const dispatch = useDispatch();
+    
+    const product = useSelector(state => state.products[id]);
+
+
     const history = useHistory();
-    const [title, setTitle] = useState('');
-    const [imageUrl, setImageUrl] = useState();
-    const [description, setDescription] = useState('');
-    const ownerId = useSelector(state => state.session.user.id)
+
+    const [title, setTitle] = useState(product.title);
+    const [imageUrl, setImageUrl] = useState(product.imageUrl);
+    const [description, setDescription] = useState(product.description);
+
+    useEffect(() => {
+        
+
+    },[product])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
-            ownerId,
-            title,
-            imageUrl,
-            description
+            product
         }
-        const newProduct = await dispatch(createProduct(payload));
+        const newProduct = await dispatch(updateOneProduct(product));
         if(newProduct) history.push(`/products/${newProduct.id}`)
     };
 
@@ -56,4 +63,6 @@ export default function NewProduct(){
             </form>
         </section>
     )
+
+
 }

@@ -7,6 +7,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Home from "./components/ProductsPage/Home";
 import Product from "./components/ProductsPage/Product";
 import NewProduct from "./components/ProductsPage/NewProduct"
+import EditProductForm from "./components/ProductsPage/EditProduct/EditProduct";
 
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/products/new">
             <NewProduct/>
+          </Route>
+          <Route path="/products/:id/edit">
+            <EditProductForm/>
           </Route>
           <Route path="/products/:productId">
             <Product/>

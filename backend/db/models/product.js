@@ -34,13 +34,13 @@ module.exports = (sequelize, DataTypes) => {
     return product;
   }
   //update
-  Product.prototype.updateProduct = async function(productId, updatedInfo){
-    const currentProduct = getCurrentProduct(productId);
-    currentProduct.update(updatedInfo)
-    return currentProduct;
+  Product.prototype.updateProduct = async function(editedProd){
+    const currentProduct = await getCurrentProduct(editedProd.id);
+    await currentProduct.update(editedProd)
+    return res.json(currentProduct);
   }
   //delete
-  Product.deleteProduct = async function(id){
+  Product.deleteProduct = async function(){
     Product.destroy({
       where: {
         productId

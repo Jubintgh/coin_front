@@ -19,9 +19,9 @@ export default function Home(){
 
     return(
         <main>
-            {productId ? <ProductDetail id={productId}/> : prodArr.map(product => (
+            {productId ? <ProductDetail id={productId} homePage={false}/> : prodArr.map(product => (
                 <Link key={product.id} to={`products/${product.id}`} className={'product__container'}>
-                    <ProductDetail id={product.id}/>
+                    <ProductDetail homePage={true} id={product.id}/>
                 </Link>
             ))}
         </main>

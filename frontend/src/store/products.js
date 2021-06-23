@@ -19,10 +19,10 @@ const removeProduct = (product) => {
     }
 }
 
-const updateProduct = (productId) => {
+const updateProduct = (editedProd) => {
     return {
         type: UPDATE_PRODUCT,
-        payload: productId
+        payload: editedProd
     }
 }
 //uses object
@@ -78,12 +78,15 @@ export const createProduct = (product) => async (dispatch) => {
     }
 };
 
-export const updateOneProduct = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/products/:id`, {
-        method: "PUT"
+export const updateOneProduct = (editedProd) => async (dispatch) => {
+    const response = await csrfFetch(`/api/products/${editedProd.id}`, {
+        method: "PUT",
+        body: JSON.stringify(
+            editedProd
+        )
     });
     const data = await response.json();
-    dispatch(updateProduct(data.product));
+    dispatch(updateProduct(data));
     return data;
 }
 
