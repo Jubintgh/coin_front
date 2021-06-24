@@ -9,7 +9,7 @@ export default function ProductDetail({id, homePage}){
     
     const dispatch = useDispatch();
     const product = useSelector(state => state.products[id]);
-    const currUser = useSelector(state => state.session.user.id);
+    const currUser = useSelector(state => state.session.user ? state.session.user.id : null)
     const history = useHistory();
     
     const [isAuth, setIsAuth] = useState(false);
