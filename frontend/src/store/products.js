@@ -19,12 +19,6 @@ const removeProduct = (product) => {
     }
 }
 
-const updateProduct = (editedProd) => {
-    return {
-        type: UPDATE_PRODUCT,
-        payload: editedProd
-    }
-}
 //uses object
 const addOneProduct = (product) => {
     return {
@@ -39,7 +33,7 @@ export const getSingleProduct = (id) => async(dispatch) => {
 
     if(response.ok){
         const product = await response.json();
-        dispatch(load(product))
+        dispatch(load(product));
     }
     return response;
 }
