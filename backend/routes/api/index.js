@@ -11,7 +11,7 @@ const { User } = require('../../db/models');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/products', productsRouter);
-// router.use('/reviews', reviewsRouter);
+router.use('/reviews', reviewsRouter);
 
 const { restoreUser } = require('../../utils/auth.js');
 router.get(

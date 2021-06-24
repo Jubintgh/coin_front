@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import ProductDetail from "../ProductComp"
+import ProductDetail from "../ProductComp";
+import AllReviews from "../../ReviewsPage/AllReviews";
 import * as productActions from '../../../store/products';
+import * as reviewActions from '../../../store/reviews'
 
 export default function Product(){
 
@@ -14,7 +16,15 @@ export default function Product(){
         dispatch(productActions.getProducts());
     },[dispatch])
 
+    useEffect(()=> {
+        dispatch(reviewActions.getReviews());
+    },[dispatch])
+
+
     return (
-        <ProductDetail id={productId}/>
+        <>
+            <ProductDetail id={productId}/>
+            <AllReviews/>
+        </>
     )
 }
