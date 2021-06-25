@@ -1,12 +1,19 @@
 /* TODO Add site wide styles */
+#root{
+    background-color: #52d6f4;
+    display: grid;
+    align-items: center;
+}
+
 .product__container:hover{
-    box-shadow: 0 0 11px rgba(33,33,33,.8);  
+    box-shadow: 0 0 11px #8d8c8A;  
 }
 
 .product__container{
     display : flex;
     transition: box-shadow .3s;
     border:1px solid lightgrey;
+    background-color: whitesmoke;
     padding-top: 10px;
     padding-bottom: 10px;
     flex-direction: column;
@@ -16,6 +23,7 @@
 
 .content__div{
     display : grid;
+    background-color: #F6F6F6;
     grid-template-areas:
     "img title button__container"
     ". desc .";
@@ -46,7 +54,7 @@
 }
 
 .button__upvote{
-    background-color: rgb(102, 204, 245);
+    background-color: #408697;
     margin-right: 0.1fr;
     border: none;
     height: 50%;

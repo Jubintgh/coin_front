@@ -10,7 +10,12 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
-    const reviews = await Review.findAll();
+    const {productId} = req.body;
+    const reviews = await Review.findAll({
+        where: {
+            productId
+        }
+    });
     return res.json(reviews);
 }))
 
