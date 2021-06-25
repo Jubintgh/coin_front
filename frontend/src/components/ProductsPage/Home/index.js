@@ -3,6 +3,7 @@ import * as productActions from '../../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductDetail from '../ProductComp/index'
 import { Link, useParams } from 'react-router-dom';
+import AllReviews from "../../ReviewsPage/AllReviews/index";
 
 
 export default function Home(){
@@ -19,7 +20,9 @@ export default function Home(){
 
     return(
         <main>
-            {productId ? <ProductDetail id={productId} homePage={false}/> : prodArr.map(product => (
+            {productId ?<> 
+            <ProductDetail id={productId} homePage={false}/> 
+            </>: prodArr.map(product => (
                 <Link key={product.id} to={`products/${product.id}`} className={'product__container'}>
                     <ProductDetail homePage={true} id={product.id}/>
                 </Link>

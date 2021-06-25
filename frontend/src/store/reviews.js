@@ -29,9 +29,10 @@ const addOneReview = (review) => {
 
 //review thunks
 export const getReviews = (id) => async(dispatch) => {
-    const response = await csrfFetch(`/api/reviews`)
+    const response = await csrfFetch(`/api/reviews/${id}`)
     if(response.ok){
         const reviews = await response.json();
+        console.log(reviews)
         dispatch(loadReview(reviews));
         return reviews;
     }
@@ -52,6 +53,7 @@ export const createReview = (review) => async(dispatch) => {
 }
 
 export const deleteReview = (id) => async(dispatch) => {
+
     const response = await csrfFetch(`/api/reviews`, {
         method: "DELETE",
         body: id

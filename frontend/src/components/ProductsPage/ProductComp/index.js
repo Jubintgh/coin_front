@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteProduct, updateOneProduct } from "../../../store/products";
 import { useHistory } from "react-router";
 import { useParams } from "react-router-dom";
-import AllReviews from "../../ReviewsPage/AllReviews/index";
-
 
 export default function ProductDetail({id, homePage}){
     
@@ -46,7 +44,6 @@ export default function ProductDetail({id, homePage}){
             <div className={'product__discussion'}>for discussion</div>
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT</button>
-            <AllReviews/>
         </section>
     )
 }

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductDetail from "../ProductComp";
 import * as productActions from '../../../store/products';
+import AllReviews from "../../ReviewsPage/AllReviews/index";
 
 
 export default function Product(){
@@ -19,6 +20,7 @@ export default function Product(){
     return (
         <>
             <ProductDetail id={productId}/>
+            <AllReviews/>
         </>
     )
 }
