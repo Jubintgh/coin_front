@@ -10,7 +10,7 @@ export default function AllReviews(){
     let {productId} = useParams();
     productId = Number(productId)
     
-    const currUser = useSelector(state => state.session.id)
+    const currUser = useSelector(state => state.session.user.id)
     const reviews = useSelector(state => state.reviews)
     const revArr = Object.values(reviews)
 
@@ -19,14 +19,14 @@ export default function AllReviews(){
     },[dispatch, productId])
 
     const deleteComment = (userId, reviewId) => {
-        dispatch(reviewActions.deleteReview(reviewId))
+        if(userId === currUser) dispatch(reviewActions.deleteReview(reviewId))
     }
 
     return(
-        
         <div>
             {
                 revArr.length && revArr.map(rev => {
+                    console.log(revArr)
                     return (
                         <div key={rev.id}>
                             <img className={'review__pic'} alt={'profile-pic'} src={rev.User?.profilePicUrl}></img>
