@@ -24,9 +24,9 @@ export default function AllReviews(){
                 revArr.map(rev => {
                     return (
                         <div key={rev.id}>
-                            <img alt={'profile-pic'}></img>
+                            <img className={'review__pic'} alt={'profile-pic'}></img>
                             <div>
-                                <p className={'review__name'}>NAME</p>
+                                <p className={'review__name'}>{rev.User.username}</p>
                                 <p className={'review__title'}>{rev.review}</p>
                             </div>
                         </div>

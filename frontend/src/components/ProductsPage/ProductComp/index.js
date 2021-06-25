@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteProduct, updateOneProduct } from "../../../store/products";
+import { deleteProduct } from "../../../store/products";
 import { useHistory } from "react-router";
 import { useParams } from "react-router-dom";
+import {createReview} from "../../../store/reviews";
 
 export default function ProductDetail({id, homePage}){
+
     
     const dispatch = useDispatch();
     const product = useSelector(state => state.products[id]);
     const currUser = useSelector(state => state.session.user ? state.session.user.id : null)
     const history = useHistory();
+
     
     const [isAuth, setIsAuth] = useState(false);
+    const [comment, setComment] = useState('');
+    // const addComment = (e) => setComment(e.target.value)
     
     useEffect(()=> {
         if(product){
@@ -28,6 +33,10 @@ export default function ProductDetail({id, homePage}){
     const editThis = async () => {
         history.push(`/products/${product.id}/edit`);
     }
+    const createComment = async (userId, productId, review) => {
+        await dispatch(createReview(userId, productId, review))
+        return;
+    }
     
     if(!product) return null
     
@@ -41,7 +50,10 @@ export default function ProductDetail({id, homePage}){
                 {/* <a></a>GET */}
                 <button className={'button__upvote'}> ^ </button>{/*UPVOTE*/}
             </div>
-            <div className={'product__discussion'}>for discussion</div>
+
+            <textarea style={{visibility: !homePage ? 'visible': 'hidden'}} onChange={e => setComment(e.target.value)}/>
+            <button style={{visibility: !homePage ? 'visible': 'hidden'}} className={'product__comment--button'} onClick={() => createComment(currUser, product.id, comment)}>comment</button>
+
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT</button>
         </section>
