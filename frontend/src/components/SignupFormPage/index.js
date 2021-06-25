@@ -8,6 +8,7 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [profilePic, setProfilePic] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -33,6 +34,15 @@ function SignupFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <label>
+        Profile Picture
+        <input
+          type="text"
+          value={profilePic}
+          onChange={(e) => setProfilePic(e.target.value)}
+          required
+        />
+      </label>
       <label>
         Email
         <input

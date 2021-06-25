@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+.review__pic{
+    height: 70px;
+    width: 70px;
+}
+
 .product__container:hover{
     box-shadow: 0 0 11px #8d8c8A;  
 }
