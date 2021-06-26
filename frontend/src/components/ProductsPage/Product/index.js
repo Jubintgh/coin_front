@@ -9,7 +9,7 @@ import AllReviews from "../../ReviewsPage/AllReviews/index";
 export default function Product(){
 
     const dispatch = useDispatch();
-    
+
 
     const {productId} = useParams();
     useEffect(()=> {

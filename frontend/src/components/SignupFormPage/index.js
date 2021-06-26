@@ -8,7 +8,7 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [profilePicUrl, setProfilePic] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -20,7 +20,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ profilePicUrl, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -38,7 +38,7 @@ function SignupFormPage() {
         Profile Picture
         <input
           type="text"
-          value={profilePic}
+          value={profilePicUrl}
           onChange={(e) => setProfilePic(e.target.value)}
           required
         />

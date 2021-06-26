@@ -34,6 +34,11 @@ export default function ProductDetail({id, homePage}){
         history.push(`/products/${product.id}/edit`);
     }
     const createComment = async (userId, productId, review) => {
+        if(!userId){
+            window.alert('please sign up or log in to post a comment');
+            return;
+        }
+        
         await dispatch(createReview(userId, productId, review))
         return;
     }
@@ -51,7 +56,7 @@ export default function ProductDetail({id, homePage}){
                 <button className={'button__upvote'}> ^ </button>{/*UPVOTE*/}
             </div>
 
-            <textarea style={{visibility: !homePage ? 'visible': 'hidden'}} onChange={e => setComment(e.target.value)}/>
+            <textarea style={{visibility: !homePage ? 'visible': 'hidden'}} disabled={currUser == null} onChange={e => setComment(e.target.value)}/>
             <button style={{visibility: !homePage ? 'visible': 'hidden'}} className={'product__comment--button'} onClick={() => createComment(currUser, product.id, comment)}>comment</button>
 
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>

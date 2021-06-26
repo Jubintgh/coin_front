@@ -15,6 +15,8 @@
 }
 
 .product__container{
+    border-radius: 10px;
+    margin-bottom: 10px;
     display : flex;
     transition: box-shadow .3s;
     border:1px solid lightgrey;

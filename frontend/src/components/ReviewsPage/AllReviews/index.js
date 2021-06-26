@@ -10,13 +10,14 @@ export default function AllReviews(){
     let {productId} = useParams();
     productId = Number(productId)
     
-    const currUser = useSelector(state => state.session.user.id)
+    const currUser = useSelector(state => state.session.user ? state.session.user.id : null)
     const reviews = useSelector(state => state.reviews)
     const revArr = Object.values(reviews)
 
     useEffect(()=> {
         dispatch(reviewActions.getReviews(productId));
-    },[dispatch, productId])
+    },[dispatch, productId, currUser])
+
 
     const deleteComment = (userId, reviewId) => {
         if(userId === currUser) dispatch(reviewActions.deleteReview(reviewId))
@@ -26,15 +27,14 @@ export default function AllReviews(){
         <div>
             {
                 revArr.length && revArr.map(rev => {
-                    console.log(revArr)
                     return (
                         <div key={rev.id}>
                             <img className={'review__pic'} alt={'profile-pic'} src={rev.User?.profilePicUrl}></img>
                                 <div>
-                                    <p className={'review__name'}>{rev.User.username}</p>
+                                    <p className={'review__name'}>{rev.User?.username}</p>
                                     <p className={'review__title'}>{rev.review}</p>
                                 </div>
-                            <button onClick={() => deleteComment(rev.User.id ,rev.id)}>delete</button>
+                            <button onClick={() => deleteComment(rev.User?.id ,rev.id)}>delete</button>
                         </div>
                     )
                 })
