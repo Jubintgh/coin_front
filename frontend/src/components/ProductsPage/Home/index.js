@@ -3,7 +3,6 @@ import * as productActions from '../../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductDetail from '../ProductComp/index'
 import { Link, useParams } from 'react-router-dom';
-import AllReviews from "../../ReviewsPage/AllReviews/index";
 
 
 export default function Home(){

@@ -15,7 +15,7 @@ export default function Product(){
     useEffect(()=> {
         dispatch(productActions.getProducts());
     },[dispatch])
-
+    
 
     return (
         <>

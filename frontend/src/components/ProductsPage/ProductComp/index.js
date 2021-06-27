@@ -47,18 +47,13 @@ export default function ProductDetail({id, homePage}){
     
     return (
         <section className={'content__div'}>{/* image and description*/}
+            <button className={'button__upvote'}> ^ </button>{/*UPVOTE*/}
             <div className={'product__desc'}>{product.description}</div>{/* description */}
             <div className={'product__price'}>{product.price}</div>
             <h1 className={'product__title'}>{product.title}</h1>
-            <img src={product.imageUrl} alt={'pic'} className={'product__img'}/>{/* thumbnail */}
-            <div className={'button__container'}>{/* 2 buttons for upvote and GET*/}
-                {/* <a></a>GET */}
-                <button className={'button__upvote'}> ^ </button>{/*UPVOTE*/}
-            </div>
-
+            <img src={product.imageUrl} alt={'pic'} className={'product__img'}/>
             <textarea style={{visibility: !homePage ? 'visible': 'hidden'}} disabled={currUser == null} onChange={e => setComment(e.target.value)}/>
             <button style={{visibility: !homePage ? 'visible': 'hidden'}} className={'product__comment--button'} onClick={() => createComment(currUser, product.id, comment)}>comment</button>
-
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT</button>
         </section>

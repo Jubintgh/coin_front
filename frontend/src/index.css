@@ -20,11 +20,10 @@
     }
   }
 
-/* TODO Add site wide styles */
+
 #root{
-    background-color: whitesmoke;
+    /* background-image: url('https://i.dlpng.com/static/png/6804610_preview.png'); */
     display: grid;
-    align-items: center;
 }
 
 .review__pic{
@@ -38,6 +37,7 @@
 
 .product__container{
     text-decoration: none;
+    box-sizing: border-box;
     border-radius: 1%;
     margin-bottom: 10px;
     display : flex;
@@ -47,12 +47,13 @@
     padding-top: 10px;
     padding-bottom: 10px;
     flex-direction: column;
-    width: inherit;
-    justify-content: flex-start;
+    width: 100%;
+    align-self: center;
 }
 
 .content__div{
     display : grid;
+    box-sizing: border-box;
     background-color: #F6F6F6;
     grid-template-areas:
     "img title button__container"
@@ -84,11 +85,16 @@
 }
 
 .button__upvote{
-    background-color: #408697;
-    margin-right: 0.1fr;
-    border: none;
-    height: 50%;
-    width: 50%;
-    right: 20px;
-    bottom: 10px;
+  background-color: whitesmoke;
+  border: solid 1px black;
+  box-sizing: border-box;
+  margin-left: 50px;
+  height: 80%;
+  width: 20%;
+  right: 20px;
+  bottom: 10px;
+}
+
+.button__upvote:hover{
+
 }

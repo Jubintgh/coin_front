@@ -11,10 +11,12 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-       <ProfileButton user={sessionUser} />
-       <img className={'curr__profpic'} src={sessionUser?.profilePicUrl} alt={'profile pic'}/>
-      </>
+      <div className="navbar-main">
+        <ProfileButton user={sessionUser} />
+        {/* <img src="../../../public/logo.png" alt="webicon"/> */}
+        <input id="search-bar" type="text" placeholder="Search" onKeyUp={(e) => search(e)} />
+        <img className={'curr__profpic'} src={sessionUser?.profilePicUrl} alt={'profile pic'}/>
+      </div>
     );
   } else {
     sessionLinks = (
@@ -33,12 +35,13 @@ function Navigation({ isLoaded }){
 
   return (
     <>
-    <ul className={'navbar-1'}>
-      <input id="search-bar" type="text" placeholder="Search" onKeyUp={(e) => search(e)} />
-      <li className={'navbar'}>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      <ul className={'navbar-1'}>
+        <li className={'navbar'}>
+          {isLoaded && sessionLinks}
+          {/* <input id="search-bar" type="text" placeholder="Search" onKeyUp={(e) => search(e)} /> */}
+          {/* {isLoaded && <img className={'curr__profpic'} src={sessionUser?.profilePicUrl} alt={'profile pic'}/>} */}
+        </li>
+      </ul>
     </>
   );
 }

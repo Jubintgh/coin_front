@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'; 
+import React, {useEffect} from 'react'; 
 import * as reviewActions from '../../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 export default function AllReviews(){
@@ -14,13 +14,15 @@ export default function AllReviews(){
     const reviews = useSelector(state => state.reviews)
     const revArr = Object.values(reviews)
 
+    
     useEffect(()=> {
         dispatch(reviewActions.getReviews(productId));
     },[dispatch, productId, currUser])
-
-
+    
     const deleteComment = (userId, reviewId) => {
-        if(userId === currUser) dispatch(reviewActions.deleteReview(reviewId))
+        if(userId === currUser){
+            dispatch(reviewActions.deleteReview(reviewId));
+        }
     }
 
     return(
@@ -34,7 +36,7 @@ export default function AllReviews(){
                                     <p className={'review__name'}>{rev.User?.username}</p>
                                     <p className={'review__title'}>{rev.review}</p>
                                 </div>
-                            <button onClick={() => deleteComment(rev.User?.id ,rev.id)}>delete</button>
+                            <button style={{visibility: rev.User?.id === currUser ? 'visible' : 'hidden'}} onClick={() => deleteComment(rev.User?.id ,rev.id)}>delete</button>
                         </div>
                     )
                 })
