@@ -1,6 +1,28 @@
+@media screen and (max-width: 900px) {
+    ul {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    
+    ul li a {
+      float: left;
+      padding: 15px;
+    }
+    
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    ul li a {
+      text-align: center;
+      float: none;
+    }
+  }
+
 /* TODO Add site wide styles */
 #root{
-    background-color: #52d6f4;
+    background-color: whitesmoke;
     display: grid;
     align-items: center;
 }
@@ -15,7 +37,8 @@
 }
 
 .product__container{
-    border-radius: 10px;
+    text-decoration: none;
+    border-radius: 1%;
     margin-bottom: 10px;
     display : flex;
     transition: box-shadow .3s;
@@ -24,7 +47,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     flex-direction: column;
-    width: auto;
+    width: inherit;
     justify-content: flex-start;
 }
 
@@ -39,7 +62,7 @@
     padding-right: 19%;
     color: rgb(36, 39, 41);
     font-size: 13px;
-    width: auto;
+    width: inherit;
 }
 
 .product__title{

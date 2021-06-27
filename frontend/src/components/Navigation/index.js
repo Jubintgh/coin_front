@@ -11,7 +11,10 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
+      <>
        <ProfileButton user={sessionUser} />
+       <img className={'curr__profpic'} src={sessionUser?.profilePicUrl} alt={'profile pic'}/>
+      </>
     );
   } else {
     sessionLinks = (
@@ -22,13 +25,21 @@ function Navigation({ isLoaded }){
     );
   }
 
+  const search = (e) => {
+    if (e.keyCode === 13){
+      
+    }
+  }
+
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <>
+    <ul className={'navbar-1'}>
+      <input id="search-bar" type="text" placeholder="Search" onKeyUp={(e) => search(e)} />
+      <li className={'navbar'}>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    </>
   );
 }
 

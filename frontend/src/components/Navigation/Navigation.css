@@ -1,0 +1,90 @@
+.menu-btn{
+}
+
+.bar1, .bar2, .bar3 {
+    width: 20px;
+    height: 3px;
+    background-color: black;
+    color: #295762;
+    margin: 6px 0;
+}
+
+.profile-dropdown{
+    width: 75%;
+    margin-bottom: 0%;
+    margin-left: 6%;
+
+}
+.navbar-1{
+    display: grid;
+    /* grid-template-columns: "m . s"; */
+    width: inherit;
+    margin: 1%;
+    float: left;
+}
+
+.navbar{
+    margin: 10px;
+    grid-area: m;
+    margin-left: 0;
+    grid-column-start: 1;
+}
+
+.logout-btn{
+    width: 100%;
+}
+
+ul {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    background-color: #408697;
+}
+  
+  li a {
+    display: block;
+    color: whitesmoke;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+
+  .active {
+    background-color: #68abbc;
+    margin-bottom: 0%;
+  }
+
+  li {
+    box-sizing: border-box;
+  }
+  
+  li:last-child {
+    border-right: none;
+  }
+
+  #search-bar{
+    background-color: #F5F8FF;
+    border-style: none;
+    width: 95%;
+    height: 30px;
+    border-radius: 5px;
+    grid-area: s;
+    margin-top: 1%;
+  }
+
+  .curr__profpic{
+    image-rendering: crisp-edges;
+    border-radius: 50px;
+    width: 8%;
+    margin-left: 5%;
+  }

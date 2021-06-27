@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { useHistory } from "react-router-dom";
+
 
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const history = useHistory();
+
   
   const openMenu = () => {
     if (showMenu) return;
@@ -31,23 +31,22 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
-  const newProduct = (e) => {
-    e.preventDefault();
-    history.push('/products/new')
-  }
-
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className={'menu-btn'} onClick={openMenu}>
+        {/* <i className="fas fa-user-circle"/> */}
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          {/* <input id="search-bar" type="text" placeholder="Search"/> */}
+          <li><a href={'/'}>Home</a></li>
+          <li><a href={'/products/new'}>Post new product</a></li>
+          <li><a href={'/profile'}>{user.username}</a></li>
           <li>
-            <button onClick={newProduct}>Create new Product</button>
-            <button onClick={logout}>Log Out</button>
+            <button className={'logout-btn'} onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
