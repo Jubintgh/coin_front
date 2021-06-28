@@ -10,6 +10,7 @@ export default function ProductDetail({id, homePage}){
     
     const dispatch = useDispatch();
     const product = useSelector(state => state.products[id]);
+    // const revCount = useSelector(state => state.products[id])
     const currUser = useSelector(state => state.session.user ? state.session.user.id : null)
     const history = useHistory();
 
@@ -38,7 +39,6 @@ export default function ProductDetail({id, homePage}){
             window.alert('please sign up or log in to post a comment');
             return;
         }
-        
         await dispatch(createReview(userId, productId, review))
         return;
     }
@@ -55,7 +55,7 @@ export default function ProductDetail({id, homePage}){
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>
             <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT</button>
             <textarea className="comment-section" rows="2" cols="5" style={{visibility: !homePage ? 'visible': 'hidden'} } disabled={currUser == null} onChange={e => setComment(e.target.value)}/>
-                <button style={{visibility: !homePage ? 'visible': 'hidden'}} className={'product__comment--button'} onClick={() => createComment(currUser, product.id, comment)}>comment</button>
+            <button style={{visibility: !homePage ? 'visible': 'hidden'}} className={'product__comment--button'} onClick={() => createComment(currUser, product.id, comment)}>comment</button>
         </section>
     )
 }

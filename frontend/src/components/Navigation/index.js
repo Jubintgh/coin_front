@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import siteLogo from '../../icons/logo.png'
 
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -20,10 +21,11 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
+      <div className='intro-nav'>
+        <img className="site-logo" src={siteLogo} alt="Coin Front inc. logo"/>
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      </div>
     );
   }
 

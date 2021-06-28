@@ -6,11 +6,14 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
     background: url('../../icons/signup-bg.png');
     background-color: #4983e0;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    justify-content: center;
+    align-content: center;
   }
   
   input {
@@ -26,5 +29,8 @@
     height: 50px;
     width: 100px;
     border-style: none;
+  }
 
+  .signup-btn:hover{
+    background-color: #068552;
   }
