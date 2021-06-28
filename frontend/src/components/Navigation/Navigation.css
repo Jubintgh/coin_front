@@ -20,7 +20,7 @@
 .navbar-1{
   display: grid;
   grid-template-columns: "m s p";
-  width: inherit;
+  width: 100%;
   float: left;
 }
 

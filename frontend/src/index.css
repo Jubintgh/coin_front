@@ -1,4 +1,4 @@
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 500px) {
     ul {
       width: 100%;
       height: auto;
@@ -13,11 +13,12 @@
     div.content {margin-left: 0;}
   }
   
-  @media screen and (max-width: 400px) {
-    ul li a {
-      text-align: center;
-      float: none;
+  @media screen and (max-width: 500px) {
+    div .product__container {
+      float: left;
+      padding: 20px;
     }
+    
   }
 
 
@@ -48,7 +49,6 @@
     padding-bottom: 10px;
     flex-direction: column;
     width: 100%;
-    align-self: center;
 }
 
 .content__div{
@@ -86,15 +86,29 @@
 
 .button__upvote{
   background-color: whitesmoke;
-  border: solid 1px black;
+  border: groove 1px rgba(128, 128, 128, 0.19);
   box-sizing: border-box;
-  margin-left: 50px;
-  height: 80%;
-  width: 20%;
-  right: 20px;
+  background: url("./icons/upvote.png") no-repeat;
+  background-size: cover;
+  align-self: flex-end;
+  justify-self: flex-end;
+  height: 80px;
+  width: 90px;
+  right: 50px;
   bottom: 10px;
+  background-color: rgba(181, 181, 181, 0.204);
 }
 
 .button__upvote:hover{
+  background-color: #00c575;
+}
 
+textarea
+{
+  margin-right: 1%;
+  resize: none;
+}
+
+.comment-section{
+  padding: 2px;
 }

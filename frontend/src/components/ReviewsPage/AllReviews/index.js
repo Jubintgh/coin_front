@@ -30,7 +30,7 @@ export default function AllReviews(){
             {
                 revArr.length && revArr.map(rev => {
                     return (
-                        <div key={rev.id}>
+                        <div key={rev.id} className={'review-class'}>
                             <img className={'review__pic'} alt={'profile-pic'} src={rev.User?.profilePicUrl}></img>
                                 <div>
                                     <p className={'review__name'}>{rev.User?.username}</p>

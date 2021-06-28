@@ -17,9 +17,13 @@ export default function Product(){
     },[dispatch])
     
 
+
     return (
         <>
             <ProductDetail id={productId}/>
+            <div>
+                <h2>Comments:</h2>
+            </div>
             <AllReviews/>
         </>
     )
