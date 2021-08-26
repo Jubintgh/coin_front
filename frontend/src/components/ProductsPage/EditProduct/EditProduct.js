@@ -37,28 +37,28 @@ export default function EditProductForm(){
         <section>
             <form onSubmit={handleSubmit}>
                 <div>
-                <label>title</label>
+                    <label>title</label>
                 <input
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 />
                 </div>
                 <div>
-                <label>url</label>
-                <input
-                value={imageUrl}
-                onChange={e => setImageUrl(e.target.value)}
-                />
+                    <label>url</label>
+                    <input
+                        value={imageUrl}
+                        onChange={e => setImageUrl(e.target.value)}
+                    />
                 </div>
                 <div>
                 <label>description</label>
-                <input
-                value={description}
-                onChange={e => setDescription(e.target.value)}
+                    <input
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
                 />
                 </div>
                 <div>
-                <button type="submit"> submit</button>
+                    <button type="submit"> submit</button>
                 </div>
             </form>
         </section>

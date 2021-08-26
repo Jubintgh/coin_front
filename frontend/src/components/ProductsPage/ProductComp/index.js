@@ -4,6 +4,7 @@ import { deleteProduct } from "../../../store/products";
 import { useHistory } from "react-router";
 import { useParams } from "react-router-dom";
 import {createReview} from "../../../store/reviews";
+import './ProductComp.css'
 
 export default function ProductDetail({id, homePage}){
 
@@ -46,16 +47,22 @@ export default function ProductDetail({id, homePage}){
     if(!product) return null
     
     return (
+        <>
         <section className={'content__div'}>{/* image and description*/}
-            <button className={'button__upvote'}></button>{/*UPVOTE*/}
             <div className={'product__desc'}>{product.description}</div>{/* description */}
             <div className={'product__price'}>{product.price}</div>
             <h1 className={'product__title'}>{product.title}</h1>
             <img src={product.imageUrl} alt={'pic'} className={'product__img'}/>
-            <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE</button>
-            <button style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT</button>
-            <textarea className="comment-section" rows="2" cols="5" style={{visibility: !homePage ? 'visible': 'hidden'} } disabled={currUser == null} onChange={e => setComment(e.target.value)}/>
-            <button style={{visibility: !homePage ? 'visible': 'hidden'}} className={'product__comment--button'} onClick={() => createComment(currUser, product.id, comment)}>comment</button>
+            <button className={'button__upvote'}></button>
         </section>
+            <div className='edit_post'>
+                <button className='product__post--button' style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => editThis()}>EDIT post</button>
+                <button className='product__post--button' style={{visibility: isAuth && !homePage ? 'visible': 'hidden'}} onClick={() => deleteThis()} type="button">DELETE Post</button>
+            </div>
+            <div className='comment_section'>
+                <textarea className="comment_input" rows="2" cols="5" style={{visibility: !homePage ? 'visible': 'hidden'} } disabled={currUser == null} onChange={e => setComment(e.target.value)}/>
+                <button className='product__comment--button' style={{visibility: !homePage ? 'visible': 'hidden'}} onClick={() => createComment(currUser, product.id, comment)}>Post</button>
+            </div>
+        </>
     )
 }

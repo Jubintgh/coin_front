@@ -1,106 +1,30 @@
 @media screen and (min-width: 500px) {
-    ul {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    
-    ul li a {
-      float: left;
-      padding: 15px;
-    }
-    
-    div.content {margin-left: 0;}
+  ul {
+    width: 100%;
+    height: auto;
+    position: relative;
   }
   
-  @media screen and (max-width: 500px) {
-    div .product__container {
-      float: left;
-      padding: 20px;
-    }
-    
+  ul li a {
+    float: left;
+    padding: 15px;
   }
+  
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 500px) {
+  div .product__container {
+    float: left;
+    padding: 20px;
+  }
+  
+}
 
 
 #root{
-    /* background-image: url('https://i.dlpng.com/static/png/6804610_preview.png'); */
-    display: grid;
-}
-
-.review__pic{
-    height: 70px;
-    width: 70px;
-}
-
-.product__container:hover{
-    box-shadow: 0 0 11px #8d8c8A;  
-}
-
-.product__container{
-    text-decoration: none;
-    box-sizing: border-box;
-    border-radius: 1%;
-    margin-bottom: 10px;
-    display : flex;
-    transition: box-shadow .3s;
-    border:1px solid lightgrey;
-    background-color: whitesmoke;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    flex-direction: column;
-    width: 100%;
-}
-
-.content__div{
-    display : grid;
-    box-sizing: border-box;
-    background-color: #F6F6F6;
-    grid-template-areas:
-    "img title button__container"
-    ". desc .";
-    grid-template-columns: 0.5fr 2fr 1fr;
-    padding: 1em;
-    padding-right: 19%;
-    color: rgb(36, 39, 41);
-    font-size: 13px;
-    width: inherit;
-}
-
-.product__title{
-    grid-area: title;
-    margin-bottom: 2em;
-    justify-content:flex-start;
-}
-
-.product__desc{
-    grid-area: desc;
-    margin-bottom: 20px;
-}
-
-.product__img{
-    grid-area: img;
-    padding: 5px;
-    width: 100px;
-    height: 100px;
-}
-
-.button__upvote{
-  background-color: whitesmoke;
-  border: groove 1px rgba(128, 128, 128, 0.19);
-  box-sizing: border-box;
-  background: url("./icons/upvote.png") no-repeat;
-  background-size: cover;
-  align-self: flex-end;
-  justify-self: flex-end;
-  height: 50px;
-  width: 50px;
-  right: 50px;
-  bottom: 10px;
-  background-color: rgba(181, 181, 181, 0.204);
-}
-
-.button__upvote:hover{
-  background-color: #00c575;
+  /* background-image: url('https://i.dlpng.com/static/png/6804610_preview.png'); */
+  display: grid;
 }
 
 textarea
@@ -109,6 +33,34 @@ textarea
   resize: none;
 }
 
-.comment-section{
-  padding: 2px;
+* {
+  box-sizing: border-box;
+}
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+html, body, div,
+h1, h2, h3, h4,
+h5, h6, p, blockquote,
+img, ol, ul, li,
+input, label, select,
+table, tbody, tfoot, thead, tr, th, td,
+footer, header, menu, nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* input:focus, textarea:focus {
+  outline: none;
+} */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  text-decoration: none;
+  color: #000;
 }

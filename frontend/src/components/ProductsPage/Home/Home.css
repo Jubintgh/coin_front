@@ -1,0 +1,23 @@
+.main_page{
+    width: 70%;
+}
+
+/* .main_page_product_holder{
+    width: 20vw;
+    height: 10vh;
+} */
+
+.product__container{
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 1%;
+    margin: 1% 2% 2% 3%;
+    display : flex;
+    transition: box-shadow .3s;
+    border:1px solid lightgrey;
+    background-color: rgb(255, 255, 255);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-direction: column;
+    width: 100%;
+  }

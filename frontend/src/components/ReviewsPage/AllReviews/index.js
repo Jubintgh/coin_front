@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import * as reviewActions from '../../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import './Reviews.css'
 
 
 export default function AllReviews(){
@@ -32,11 +33,11 @@ export default function AllReviews(){
                     return (
                         <div key={rev.id} className={'review-class'}>
                             <img className={'review__pic'} alt={'profile-pic'} src={rev.User?.profilePicUrl}></img>
-                                <div>
+                                <div className='review-holder'>
                                     <p className={'review__name'}>{rev.User?.username}</p>
-                                    <p className={'review__title'}>{rev.review}</p>
+                                    <p className={'review__body'}>{rev.review}</p>
+                                    <button className='review_button' style={{visibility: rev.User?.id === currUser ? 'visible' : 'hidden'}} onClick={() => deleteComment(rev.User?.id ,rev.id)}>delete</button>
                                 </div>
-                            <button style={{visibility: rev.User?.id === currUser ? 'visible' : 'hidden'}} onClick={() => deleteComment(rev.User?.id ,rev.id)}>delete</button>
                         </div>
                     )
                 })

@@ -3,7 +3,7 @@ import * as productActions from '../../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductDetail from '../ProductComp/index'
 import { Link, useParams } from 'react-router-dom';
-
+import './Home.css'
 
 export default function Home(){
 
@@ -18,10 +18,13 @@ export default function Home(){
     const prodArr = Object.values(products)
 
     return(
-        <main>
-            {productId ?<> 
-            <ProductDetail id={productId} homePage={false}/> 
-            </>: prodArr.map(product => (
+        <main className='main_page'>
+            {productId ?
+                <div className='main_page_product_holder'> 
+                    <ProductDetail id={productId} homePage={false}/> 
+                </div>
+                : 
+                prodArr.map(product => (
                 <Link key={product.id} to={`products/${product.id}`} className={'product__container'}>
                     <ProductDetail homePage={true} id={product.id}/>
                 </Link>

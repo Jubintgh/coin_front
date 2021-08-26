@@ -21,9 +21,9 @@ export default function Product(){
     return (
         <>
             <ProductDetail id={productId}/>
-            <div>
-                <h2>Comments:</h2>
-            </div>
+                <div>
+                    <h2>Comments:</h2>
+                </div>
             <AllReviews/>
         </>
     )
