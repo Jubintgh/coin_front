@@ -24,24 +24,33 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 router.post('/', asyncHandler(async (req, res) => {
     const {userId, productId, review} = req.body;
-    const newreview = await Review.create({
+    let newreview = await Review.create({
         userId,
         productId,
         review
     })
-    if(newreview) return res.json(review);
+    if(newreview){
+        newreview = await Review.findAll({
+            include: {
+                model: User
+            },
+            where: {
+                userId: userId
+            }
+        })
+        return res.json(newreview);
+    }
 }))
 
 router.delete('/', asyncHandler(async (req, res) => {
 
     const {id} = req.body;
-
     await Review.destroy({
         where: {
             id
         }
     })
-    return;
+    return id;
 }))
 
 

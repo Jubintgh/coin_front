@@ -22,3 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+~/.gitignore_global
+
+
+DATABASE_URL    postgres://idmdcyryvednso:72710e043b78fde207fec29ea71a24510d01af2a49f426f5a340d2782270a94a@ec2-23-23-128-222.compute-1.amazonaws.com:5432/d2v11a9jltkh24
+JWT_EXPIRES_IN      604800
+JWT_SECRET      NAbiFgOr0Dz7Nw==

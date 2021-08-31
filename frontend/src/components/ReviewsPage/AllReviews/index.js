@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'; 
 import * as reviewActions from '../../../store/reviews';
+import { deleteReview } from '../../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './Reviews.css'
@@ -20,9 +21,11 @@ export default function AllReviews(){
         dispatch(reviewActions.getReviews(productId));
     },[dispatch, productId, currUser])
     
-    const deleteComment = (userId, reviewId) => {
+    const deleteComment = async(userId, reviewId) => {
         if(userId === currUser){
-            dispatch(reviewActions.deleteReview(reviewId));
+            console.log('HIT?', reviewId)
+            await dispatch(reviewActions.deleteReview(reviewId));
+            await dispatch(reviewActions.getReviews(productId))
         }
     }
 
@@ -43,6 +46,5 @@ export default function AllReviews(){
                 })
             }
         </div>
-
     )
 }
