@@ -2,6 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "npm": "12.x"
+  },
   "main": "index.js",
   "scripts": {
     "sequelize": "sequelize",
