@@ -56,14 +56,14 @@ export const createReview = (userId, productId, review) => async(dispatch) => {
 }
 
 export const deleteReview = (id) => async(dispatch) => {
-    console.log(id, "BEING HIT")
+    // console.log(id, "BEING HIT")
     const response = await csrfFetch(`/api/reviews`, {
         method: "DELETE",
         body: JSON.stringify({
             id
         })
     });
-    console.log(response,"RESS")
+    // console.log(response,"RESS")
     dispatch(removeReview(id));
     return response;
 }
@@ -83,13 +83,13 @@ const reviewReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             // console.log(action.payload, 'tsadasdasdhis')
             newState[action.payload.id] = action.payload;
-            console.log(newState)
+            // console.log(newState)
             return newState;
         case REMOVE_REVIEW:
             newState = JSON.parse(JSON.stringify(state))
             delete newState.reviews[action.payload.id];
-            console.log(state, "OLD")
-            console.log(newState, "NEW")
+            // console.log(state, "OLD")
+            // console.log(newState, "NEW")
             return newState
         default:
             return state;
