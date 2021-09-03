@@ -103,12 +103,9 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
-      return queryInterface.bulkDelete('Reviews', null, {});
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete('Reviews', {
+      // username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
+    }, {});
   }
 };
