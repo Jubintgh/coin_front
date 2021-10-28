@@ -14,7 +14,6 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div className="navbar-main">
         <ProfileButton user={sessionUser} />
-        {/* <img src="../../../public/logo.png" alt="webicon"/> */}
         <input id="search-bar" type="text" placeholder="Search" onKeyUp={(e) => search(e)} />
         <img className={'curr__profpic'} src={sessionUser?.profilePicUrl} alt={'profile pic'}/>
       </div>
