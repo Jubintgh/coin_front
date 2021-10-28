@@ -23,7 +23,6 @@ export default function AllReviews(){
     
     const deleteComment = async(userId, reviewId) => {
         if(userId === currUser){
-            // console.log('HIT?', reviewId)
             await dispatch(reviewActions.deleteReview(reviewId));
             await dispatch(reviewActions.getReviews(productId))
         }
